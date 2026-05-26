@@ -126,6 +126,7 @@
         font-size: 0.9rem;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5rem;
       }
 
@@ -2408,7 +2409,9 @@
               stroke-linejoin="round"
               viewBox="0 0 24 24"
             >
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              <path
+                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+              ></path>
             </svg>
             <div class="contact-info-title">Facebook</div>
             <div class="contact-info-value">@outworkcallservices</div>
@@ -2549,6 +2552,7 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                viewBox="0 0 24 24"
               >
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
@@ -2640,10 +2644,7 @@
         <div class="footer-grid">
           <div>
             <div class="footer-logo">
-              <img
-                src="./logo.png"
-                alt="Outwork Logo"
-              />
+              <img src="./logo.png" alt="Outwork Logo" />
             </div>
             <p class="footer-tagline">
               Driven by Quality. Defined by Execution. Built on Trust.
@@ -2825,14 +2826,14 @@
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn.innerHTML;
         submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sending...';
+        submitBtn.innerHTML = "Sending...";
 
         // Send using FormSubmit AJAX
         fetch("https://formsubmit.co/ajax/outworkcallservices@gmail.com", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            Accept: "application/json",
           },
           body: JSON.stringify({
             Name: name,
@@ -2840,15 +2841,15 @@
             Phone: phone,
             "Requested Service": service,
             Message: message,
-            "_subject": `New Quote Request from ${name}`
-          })
+            _subject: `New Quote Request from ${name}`,
+          }),
         })
-        .then(response => response.json())
-        .then(data => {
-          console.log("Form submitted successfully:", data);
-          // Show success message
-          const formContainer = contactForm.parentElement;
-          formContainer.innerHTML = `
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Form submitted successfully:", data);
+            // Show success message
+            const formContainer = contactForm.parentElement;
+            formContainer.innerHTML = `
                   <div class="success-message">
                       <div class="success-icon">
                           <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="width: 32px; height: 32px; color: var(--white);">
@@ -2859,13 +2860,15 @@
                       <p class="success-text">We've received your message and will contact you soon.</p>
                   </div>
               `;
-        })
-        .catch(error => {
-          console.error("Error submitting form:", error);
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnText;
-          alert("Oops! There was a problem sending your message. Please try again or email us directly at outworkcallservices@gmail.com.");
-        });
+          })
+          .catch((error) => {
+            console.error("Error submitting form:", error);
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+            alert(
+              "Oops! There was a problem sending your message. Please try again or email us directly at outworkcallservices@gmail.com.",
+            );
+          });
       });
 
       // Smooth scroll for anchor links
