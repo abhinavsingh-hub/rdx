@@ -2766,6 +2766,15 @@
     </div>
 
     <script>
+      // Automatically add viewBox="0 0 24 24" to all SVGs on the page if they don't have one
+      (function() {
+        document.querySelectorAll("svg").forEach((svg) => {
+          if (!svg.getAttribute("viewBox")) {
+            svg.setAttribute("viewBox", "0 0 24 24");
+          }
+        });
+      })();
+
       // Navigation scroll effect
       window.addEventListener("scroll", function () {
         const navbar = document.getElementById("navbar");
